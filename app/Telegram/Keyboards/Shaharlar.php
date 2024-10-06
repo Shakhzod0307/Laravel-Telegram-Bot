@@ -2,8 +2,25 @@
 
 namespace App\Telegram\Keyboards;
 
+use Telegram\Bot\Keyboard\Keyboard;
+
 class Shaharlar
 {
+    public static function getShaharlar()
+    {
+        return [
+            'andijon','xonobod','xojaobod','asaka','marhamat','paytug','boston','buxoro', 'jondor', 'qorakol',
+            'gijduvon', 'gazli', 'fargona', 'qoqon', 'margilon', 'quva', 'rishton', 'bogdod', 'oltiariq', 'jizzax', 'zomin',
+            'forish', 'gallaorol', 'termiz', 'boysun', 'denov', 'sherobod', 'shorchi', 'namangan', 'chortoq', 'chust', 'pop1',
+            'uchqorgon', 'mingbuloq', 'navoiy', 'zarafshon', 'konimex', 'nurota', 'uchquduq', 'qarshi', 'dehqonobod',
+            'muborak', 'shahrisabz', 'guzor', 'sirdaryo', 'guliston', 'sardoba', 'boyovut', 'paxtaobod', 'samarqand', 'ishtixon',
+            'mirbozor', 'kattaqorgon', 'urgut', 'nukus', 'moynoq', 'taxtakopir', 'tortkol', 'qongirot', 'urganch', 'hazorasp', 'xonqa',
+            'yangibozor', 'shovot', 'tashkent', 'angren',
+            'piskent', 'bekobod', 'parkent', 'gazalkent', 'olmaliq', 'boka', 'yangiyol', 'nurafshon',
+        ];
+    }
+
+
     public function andijon()
     {
         return json_encode([
@@ -23,8 +40,7 @@ class Shaharlar
             'keyboard' => [
                 [['text' => 'buxoro'], ['text' => 'jondor']],
                 [['text' => 'qorakol'], ['text' => 'gijduvon']],
-                [['text' => 'gazli'], ['text' => '']],
-                [['text'=>'⬅️ Orqaga']],
+                [['text' => 'gazli'],['text'=>'⬅️ Orqaga']],
             ],
             'resize_keyboard' => true,
             'one_time_keyboard' => true,

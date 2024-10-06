@@ -9,6 +9,7 @@ use App\Telegram\Commands\NamozVaqtlariCommand;
 use App\Telegram\Commands\StartCommand;
 use App\Telegram\Commands\TaqvimCommand;
 use App\Telegram\Commands\ZikrlarCommand;
+use App\Telegram\Keyboards\Shaharlar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Telegram\Bot\Laravel\Facades\Telegram;
@@ -18,6 +19,98 @@ class TelegramController extends Controller
 {
     public function handle(Request $request)
     {
+        $viloyatlar = [
+            'andijon'=>'Andijon viloyati',
+            'buxoro'=>'Buxoro viloyati',
+            'fargona'=>"Farg'ona viloyati",
+            'jizzax'=>'Jizzax viloyati',
+            'namangan'=>'Namangan viloyati',
+            'navoiy'=>'Navoiy viloyati',
+            'surxondaryo'=>'Surxondaryo viloyati',
+            'samarqand'=>'Samarkand viloyati',
+            'sirdaryo'=>'Sirdaryo viloyati',
+            'xorazm'=>'Xorazm viloyati',
+            'qashqadaryo'=>'Qashqadaryo viloyati',
+            'toshkent'=>'Toshkent viloyati',
+            'qoraqalpogiston'=>"Qoraqalpog'iston Respublikasi",
+        ];
+        $cities = [
+            'andijon',
+            'xonobod',
+            'xojaobod',
+            'asaka',
+            'marhamat',
+            'paytug',
+            'boston',
+            'buxoro',
+            'jondor',
+            'qorakol',
+            'gijduvon',
+            'gazli',
+            'fargona',
+            'qoqon',
+            'margilon',
+            'quva',
+            'rishton',
+            'bogdod',
+            'oltiariq',
+            'jizzax',
+            'zomin',
+            'forish',
+            'gallaorol',
+            'termiz',
+            'boysun',
+            'denov',
+            'sherobod',
+            'shorchi',
+            'namangan',
+            'chortoq',
+            'chust',
+            'pop1',
+            'uchqorgon',
+            'mingbuloq',
+            'navoiy',
+            'zarafshon',
+            'konimex',
+            'nurota',
+            'uchquduq',
+            'qarshi',
+            'dehqonobod',
+            'muborak',
+            'shahrisabz',
+            'guzor',
+            'sirdaryo',
+            'guliston',
+            'sardoba',
+            'boyovut',
+            'paxtaobod',
+            'samarqand',
+            'ishtixon',
+            'mirbozor',
+            'kattaqorgon',
+            'urgut',
+            'nukus',
+            'moynoq',
+            'taxtakopir',
+            'tortkol',
+            'qongirot',
+            'urganch',
+            'hazorasp',
+            'xonqa',
+            'yangibozor',
+            'shovot',
+            'tashkent',
+            'angren',
+            'piskent',
+            'bekobod',
+            'parkent',
+            'gazalkent',
+            'olmaliq',
+            'boka',
+            'yangiyol',
+            'nurafshon',
+        ];
+
         try {
             $telegramMessage = Telegram::getWebhookUpdates();
             if (isset($telegramMessage['message']['text'])) {
@@ -60,36 +153,23 @@ class TelegramController extends Controller
                 };
                 if ($messageText === '📚Bot haqida'){
                     (new BotHaqidaCommand())->execute($chatId);
-                };if ($messageText === 'Andijan'){
-                    (new TaqvimCommand())->andijon($chatId);
                 };
-                if ($messageText === 'Andijon viloyati'){
-                    (new NamozVaqtlariCommand())->Andijon($chatId);
-                };if ($messageText === 'Buxoro viloyati'){
-                    (new NamozVaqtlariCommand())->Buxoro($chatId);
-                };if ($messageText === "Farg'ona viloyati"){
-                    (new NamozVaqtlariCommand())->Fargona($chatId);
-                };if ($messageText === 'Jizzax viloyati'){
-                    (new NamozVaqtlariCommand())->Jizzax($chatId);
-                };if ($messageText === 'Namangan viloyati'){
-                    (new NamozVaqtlariCommand())->Namangan($chatId);
-                };if ($messageText === 'Navoiy viloyati'){
-                    (new NamozVaqtlariCommand())->Navoiy($chatId);
-                };if ($messageText === 'Surxondaryo viloyati'){
-                    (new NamozVaqtlariCommand())->Surxondaryo($chatId);
-                };if ($messageText === 'Samarkand viloyati'){
-                    (new NamozVaqtlariCommand())->Samarqand($chatId);
-                };if ($messageText === 'Sirdaryo viloyati'){
-                    (new NamozVaqtlariCommand())->Sirdaryo($chatId);
-                };if ($messageText === 'Xorazm viloyati'){
-                    (new NamozVaqtlariCommand())->Xorazm($chatId);
-                };if ($messageText === 'Qashqadaryo viloyati'){
-                    (new NamozVaqtlariCommand())->Qashqadaryo($chatId);
-                };if ($messageText === 'Toshkent viloyati'){
-                    (new NamozVaqtlariCommand())->Toshkent($chatId);
-                };if ($messageText === "Qoraqalpog'iston Respublikasi"){
-                    (new NamozVaqtlariCommand())->Qoraqalpogiston($chatId);
-                };
+//                if ($messageText === 'Andijan'){
+//                    (new TaqvimCommand())->andijon($chatId);
+//                };
+                foreach ($viloyatlar as $key => $value) {
+                    if ($messageText === $value) {
+                        (new NamozVaqtlariCommand())->viloyat($key,$chatId);
+                        break;
+                    }
+                }
+                foreach ($cities as $shahar) {
+                    if ($messageText === $shahar) {
+                        (new NamozVaqtlariCommand())->shaharlar($shahar,$chatId);
+                        break;
+                    }
+                }
+
 
             }
         } catch (\Exception $exception) {
