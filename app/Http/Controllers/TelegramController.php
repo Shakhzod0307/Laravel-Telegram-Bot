@@ -31,6 +31,8 @@ class TelegramController extends Controller
                 };
                 if ($messageText === '⬅️Orqaga'){
                     (new TaqvimCommand())->execute($chatId);
+                };if ($messageText === '⬅️ Orqaga'){
+                    (new NamozVaqtlariCommand())->execute($chatId);
                 };
                 if ($messageText === '📆Ramazon taqvimi'){
                     (new TaqvimCommand())->execute($chatId);
@@ -58,9 +60,35 @@ class TelegramController extends Controller
                 };
                 if ($messageText === '📚Bot haqida'){
                     (new BotHaqidaCommand())->execute($chatId);
-                };
-                if ($messageText === 'Andijan'){
+                };if ($messageText === 'Andijan'){
                     (new TaqvimCommand())->andijon($chatId);
+                };
+                if ($messageText === 'Andijon viloyati'){
+                    (new NamozVaqtlariCommand())->Andijon($chatId);
+                };if ($messageText === 'Buxoro viloyati'){
+                    (new NamozVaqtlariCommand())->Buxoro($chatId);
+                };if ($messageText === "Farg'ona viloyati"){
+                    (new NamozVaqtlariCommand())->Fargona($chatId);
+                };if ($messageText === 'Jizzax viloyati'){
+                    (new NamozVaqtlariCommand())->Jizzax($chatId);
+                };if ($messageText === 'Namangan viloyati'){
+                    (new NamozVaqtlariCommand())->Namangan($chatId);
+                };if ($messageText === 'Navoiy viloyati'){
+                    (new NamozVaqtlariCommand())->Navoiy($chatId);
+                };if ($messageText === 'Surxondaryo viloyati'){
+                    (new NamozVaqtlariCommand())->Surxondaryo($chatId);
+                };if ($messageText === 'Samarkand viloyati'){
+                    (new NamozVaqtlariCommand())->Samarqand($chatId);
+                };if ($messageText === 'Sirdaryo viloyati'){
+                    (new NamozVaqtlariCommand())->Sirdaryo($chatId);
+                };if ($messageText === 'Xorazm viloyati'){
+                    (new NamozVaqtlariCommand())->Xorazm($chatId);
+                };if ($messageText === 'Qashqadaryo viloyati'){
+                    (new NamozVaqtlariCommand())->Qashqadaryo($chatId);
+                };if ($messageText === 'Toshkent viloyati'){
+                    (new NamozVaqtlariCommand())->Toshkent($chatId);
+                };if ($messageText === "Qoraqalpog'iston Respublikasi"){
+                    (new NamozVaqtlariCommand())->Qoraqalpogiston($chatId);
                 };
 
             }
