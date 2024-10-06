@@ -172,7 +172,7 @@ class Shaharlar
     {
         return json_encode([
             'keyboard' => [
-                [['text' => 'tashkent'], ['text' => 'angren']],
+                [['text' => 'toshkent'], ['text' => 'angren']],
                 [['text' => 'piskent'], ['text' => 'bekobod']],
                 [['text' => 'parkent'], ['text' => 'gazalkent']],
                 [['text' => 'olmaliq'], ['text' => 'boka']],

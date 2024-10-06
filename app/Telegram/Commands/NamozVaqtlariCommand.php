@@ -48,10 +48,19 @@ class NamozVaqtlariCommand
             ];
             Telegram::sendMessage([
                 'chat_id' => $chatId,
-                'text' => $shahar,
+                'text' => "☪️ Namoz vaqtlari:\n\n
+             <b>Bugun {$times['bugun']}
+             {$times['hozirgi']}\n</b>
+             ( $shahar shahri )\n\n
+             🏙 <b>Bomdod</b>: {$times['bomdod']} 🕰 <b>gacha (Saharlik)</b>\n\n
+             🌅 <b>Quyosh</b>: {$times['quyosh']} 🕰\n\n
+             🏞 <b>Peshin</b>: {$times['peshin']} 🕰\n\n
+             🌇 <b>Asr</b>: {$times['asr']} 🕰\n\n
+             🌆 <b>Shom</b>: {$times['shom']} 🕰 <b>so'ng (Iftor)</b>\n\n
+             🌃 <b>Xufton</b>: {$times['xufton']} 🕰 \n\n
+             Ma'lumotlar namozvaqti uz sahifasidan olindi!",
                 'parse_mode' => 'HTML',
             ]);
-            return response()->json($times);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }

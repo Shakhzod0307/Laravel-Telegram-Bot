@@ -35,80 +35,10 @@ class TelegramController extends Controller
             'qoraqalpogiston'=>"Qoraqalpog'iston Respublikasi",
         ];
         $cities = [
-            'andijon',
-            'xonobod',
-            'xojaobod',
-            'asaka',
-            'marhamat',
-            'paytug',
-            'boston',
-            'buxoro',
-            'jondor',
-            'qorakol',
-            'gijduvon',
-            'gazli',
-            'fargona',
-            'qoqon',
-            'margilon',
-            'quva',
-            'rishton',
-            'bogdod',
-            'oltiariq',
-            'jizzax',
-            'zomin',
-            'forish',
-            'gallaorol',
-            'termiz',
-            'boysun',
-            'denov',
-            'sherobod',
-            'shorchi',
-            'namangan',
-            'chortoq',
-            'chust',
-            'pop1',
-            'uchqorgon',
-            'mingbuloq',
-            'navoiy',
-            'zarafshon',
-            'konimex',
-            'nurota',
-            'uchquduq',
-            'qarshi',
-            'dehqonobod',
-            'muborak',
-            'shahrisabz',
-            'guzor',
-            'sirdaryo',
-            'guliston',
-            'sardoba',
-            'boyovut',
-            'paxtaobod',
-            'samarqand',
-            'ishtixon',
-            'mirbozor',
-            'kattaqorgon',
-            'urgut',
-            'nukus',
-            'moynoq',
-            'taxtakopir',
-            'tortkol',
-            'qongirot',
-            'urganch',
-            'hazorasp',
-            'xonqa',
-            'yangibozor',
-            'shovot',
-            'tashkent',
-            'angren',
-            'piskent',
-            'bekobod',
-            'parkent',
-            'gazalkent',
-            'olmaliq',
-            'boka',
-            'yangiyol',
-            'nurafshon',
+            'andijon', 'xonobod', 'xojaobod', 'asaka', 'marhamat', 'paytug', 'boston', 'buxoro', 'jondor', 'qorakol', 'gijduvon', 'gazli', 'fargona', 'qoqon', 'margilon', 'quva', 'rishton', 'bogdod', 'oltiariq', 'jizzax', 'zomin', 'forish', 'gallaorol', 'termiz', 'boysun', 'denov', 'sherobod',
+            'shorchi', 'namangan', 'chortoq', 'chust', 'pop1', 'uchqorgon', 'mingbuloq', 'navoiy', 'zarafshon', 'konimex', 'nurota', 'uchquduq', 'qarshi', 'dehqonobod', 'muborak', 'shahrisabz', 'guzor', 'sirdaryo',
+            'guliston', 'sardoba', 'boyovut', 'paxtaobod', 'samarqand', 'ishtixon', 'mirbozor', 'kattaqorgon', 'urgut', 'nukus', 'moynoq', 'taxtakopir', 'tortkol', 'qongirot', 'urganch', 'hazorasp', 'xonqa', 'yangibozor', 'shovot', 'toshkent', 'angren', 'piskent',
+            'bekobod', 'parkent', 'gazalkent', 'olmaliq', 'boka', 'yangiyol', 'nurafshon',
         ];
 
         try {
@@ -133,7 +63,7 @@ class TelegramController extends Controller
                 if ($messageText === '🕍Namoz vaqtlari'){
                     (new NamozVaqtlariCommand())->execute($chatId);
                 };
-                if ($messageText === '🤲Duo'){
+                if ($messageText === "🤲Ro'za tutish duosi"){
                     (new DuoCommand())->execute($chatId);
                 };
                 if ($messageText === '🤲Namozdan keyingi zikrlar'){
@@ -154,9 +84,6 @@ class TelegramController extends Controller
                 if ($messageText === '📚Bot haqida'){
                     (new BotHaqidaCommand())->execute($chatId);
                 };
-//                if ($messageText === 'Andijan'){
-//                    (new TaqvimCommand())->andijon($chatId);
-//                };
                 foreach ($viloyatlar as $key => $value) {
                     if ($messageText === $value) {
                         (new NamozVaqtlariCommand())->viloyat($key,$chatId);

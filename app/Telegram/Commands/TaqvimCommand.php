@@ -2,6 +2,7 @@
 
 namespace App\Telegram\Commands;
 use App\Telegram\Keyboards\InlineAndijanKeyboard;
+use App\Telegram\Keyboards\MainKeyboard;
 use App\Telegram\Keyboards\RegionKeyboard;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
@@ -11,11 +12,11 @@ class TaqvimCommand
 
     public function execute($chatId)
     {
-        $keyboardT = (new RegionKeyboard)->getKeyboard();
+        $keyboardT = (new MainKeyboard())->getKeyboard();
 
         Telegram::sendMessage([
             'chat_id' => $chatId,
-            'text' => "Kerakli Tumanni tanlang!",
+            'text' => "Ma'lumotlar ustida ishlanmoqda.....",
 //            'parse_mode' => 'HTML',
             'reply_markup' => $keyboardT,
         ]);
