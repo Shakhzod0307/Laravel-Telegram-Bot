@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Telegram\Commands\BotHaqidaCommand;
+use App\Telegram\Commands\DuoCommand;
 use App\Telegram\Commands\MenyuCommand;
 use App\Telegram\Commands\NamozVaqtlariCommand;
 use App\Telegram\Commands\StartCommand;
 use App\Telegram\Commands\TaqvimCommand;
+use App\Telegram\Commands\ZikrlarCommand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Telegram\Bot\Laravel\Facades\Telegram;
@@ -26,24 +29,39 @@ class TelegramController extends Controller
                 if ($messageText === '⬅️Bosh Menyu'){
                     (new MenyuCommand())->execute($chatId);
                 };
+                if ($messageText === '⬅️Orqaga'){
+                    (new TaqvimCommand())->execute($chatId);
+                };
                 if ($messageText === '📆Ramazon taqvimi'){
                     (new TaqvimCommand())->execute($chatId);
-                };;
-                if ($messageText === 'Andijan'){
-                    (new TaqvimCommand())->andijon($chatId);
                 };
                 if ($messageText === '🕍Namoz vaqtlari'){
                     (new NamozVaqtlariCommand())->execute($chatId);
                 };
                 if ($messageText === '🤲Duo'){
-                    (new TaqvimCommand())->execute($chatId);
+                    (new DuoCommand())->execute($chatId);
                 };
                 if ($messageText === '🤲Namozdan keyingi zikrlar'){
-                    (new TaqvimCommand())->execute($chatId);
+                    (new ZikrlarCommand())->execute($chatId);
+                };
+                if ($messageText === 'Namozdan keyingi zikrlar'){
+                    (new ZikrlarCommand())->zikrlar($chatId);
+                };
+                if ($messageText === 'Oyatal Kursi'){
+                    (new ZikrlarCommand())->oyatalKursi($chatId);
+                };
+                if ($messageText === 'Tasbeh'){
+                    (new ZikrlarCommand())->tasbeh($chatId);
+                };
+                if ($messageText === 'Kalimai Tavhid'){
+                    (new ZikrlarCommand())->tavhid($chatId);
                 };
                 if ($messageText === '📚Bot haqida'){
-                    (new TaqvimCommand())->execute($chatId);
-                }
+                    (new BotHaqidaCommand())->execute($chatId);
+                };
+                if ($messageText === 'Andijan'){
+                    (new TaqvimCommand())->andijon($chatId);
+                };
 
             }
         } catch (\Exception $exception) {
